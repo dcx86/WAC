@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Login from './Login';
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <header className="App-header">
         <p>WAC</p>
       </header>
+      <Login />
     </div>
   );
 }
