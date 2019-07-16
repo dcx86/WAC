@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FacebookLogin from 'react-facebook-login';
+import { postUsers , callUsers } from './db-connection-functions.js'
 
 function Login() {
+  const [login, setLogin] = useState();
 
-  const responseFacebook = (response) => {
-    console.log(response);
+  useEffect(() => {
+    if (login) {
+      postUsers(login)
+      console.log(login)
+    }
+  }, [login])
+
+  const responseFacebook = ({ id, name, email, accessToken }) => {
+    setLogin({ id, name, email, accessToken });
   }
 
-//   window.FB.getLoginStatus(function(response) {
-//     statusChangeCallback(response);
-// });
+  //   window.FB.getLoginStatus(function(response) {
+  //     statusChangeCallback(response);
+  // });
 
   return (
     <div className="Login">
       <header className="Login--header">
         <p>LOGIN</p>
       </header>
-      <FacebookLogin 
-        appId="2851709378235915" 
+      <FacebookLogin
+        appId="2851709378235915"
         fields="name,email,picture"
-        icon="fa-facebook" 
+        icon="fa-facebook"
         callback={responseFacebook} />
     </div>
   );
