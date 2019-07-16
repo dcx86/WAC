@@ -6,17 +6,26 @@ import fetch from 'node-fetch';
 function App() {
   const [geolocation, setGeolocation] = useState({});
   const [weather, setWeather] = useState({ daily: { summary: undefined } });
-  const [apiResponse, setApiResponse] = useState({ apiRespnse: "" })
+  const [apiResponse, setApiResponse] = useState({ apiRespnse: "" });
+  const [users, setUsers] = useState({users: ""});
 
   useEffect(() => {
-    console.log('this effect runs only on mount')
-    callAPI()
-  }, [])
+    console.log('this effect runs only on mount');
+    callAPI();
+    callUsers();
+  }, []);
 
   useEffect(() => {
-    console.log('this effect runs only when apiResponse changes')
-    console.log(apiResponse)
-  }, [apiResponse])
+    console.log('this effect runs only when apiResponse changes');
+    console.log(apiResponse);
+    console.log(users);
+  }, [apiResponse, users]);
+
+  const callUsers = () => {
+    fetch("http://localhost:9000/users")
+        .then(res => res.text())
+        .then(res => setUsers({ users: res }));
+  }
 
   const callAPI = () => {
     fetch("http://localhost:9000/testAPI")
