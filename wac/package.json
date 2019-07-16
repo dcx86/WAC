@@ -4,6 +4,7 @@
   "author": "millionsofbugs",
   "private": true,
   "dependencies": {
+    "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-facebook-login": "^4.1.1",
