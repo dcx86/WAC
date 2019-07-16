@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "start-db": "docker run --name mongo-mob -p 27017:27017 mongo:latest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
