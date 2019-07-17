@@ -10,6 +10,7 @@ router.post('/', function (req, res, next) {
     if (err) throw err;
     const dbo = db.db('mongo-mob');
     const user = req.body;
+    console.log('ADHJSDLHSJALAHJDSLHJDASLHJADKSLHJKADSLHJSALHJDSA',user);
     dbo.collection('users').findOne({id: user.id}, function (err, result) {
       if (err) throw err;
       if (!result) {
@@ -20,7 +21,6 @@ router.post('/', function (req, res, next) {
           db.close();
         });
       }
-      console.log("Nothing happened")
       db.close();
     });  
   });

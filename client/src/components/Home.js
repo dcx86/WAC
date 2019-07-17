@@ -37,7 +37,7 @@ function Home() {
   return (
     <div className="Login">
       <header className="Login--header">
-        <p>Home</p>
+        <p>You are now logged in!</p>
       </header>
     </div>
   );

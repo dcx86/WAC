@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { postUsers , callUsers } from './db-connection-functions.js'
+import { postUsers, callUsers } from './db-connection-functions.js'
 
-function Login({login, setLogin}) {
+function Login({ setIsLogin }) {
+  const [login, setLogin] = useState();
+
 
   useEffect(() => {
     if (login) {
@@ -12,6 +14,7 @@ function Login({login, setLogin}) {
 
   const responseFacebook = ({ id, name, email, accessToken }) => {
     setLogin({ id, name, email, accessToken });
+    setIsLogin(true);
   }
 
   //   window.FB.getLoginStatus(function(response) {

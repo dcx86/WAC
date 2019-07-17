@@ -4,9 +4,9 @@ import Login from './Login';
 import Home from './Home';
 
 function App() {
-  const [login, setLogin] = useState();
+  const [isLogin, setIsLogin] = useState(false);
   useEffect(() => {
-    console.log(login);
+    console.log();
   });
 
   return (
@@ -14,8 +14,8 @@ function App() {
       <header className="App-header">
         <p>WAC</p>
       </header>
-      {!login && <Login login={login} setLogin={setLogin} />}
-      {false && <Home />}
+      {!isLogin && <Login setIsLogin={setIsLogin} />}
+      {isLogin && <Home />}
     </div>
   );
 }
