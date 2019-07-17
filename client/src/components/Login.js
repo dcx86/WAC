@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { postUsers , callUsers } from './db-connection-functions.js'
 
-function Login() {
-  const [login, setLogin] = useState();
+function Login({login, setLogin}) {
 
   useEffect(() => {
     if (login) {
-      postUsers(login)
-      console.log(login)
+      postUsers(login);
     }
   }, [login])
 
@@ -25,11 +23,11 @@ function Login() {
       <header className="Login--header">
         <p>LOGIN</p>
       </header>
-      <FacebookLogin
+      {!login && <FacebookLogin
         appId="2851709378235915"
         fields="name,email,picture"
         icon="fa-facebook"
-        callback={responseFacebook} />
+        callback={responseFacebook} />}
     </div>
   );
 }
