@@ -10,11 +10,9 @@ router.post('/', function (req, res, next) {
     if (err) throw err;
     const dbo = db.db('mongo-mob');
     const user = req.body;
-    console.log('ADHJSDLHSJALAHJDSLHJDASLHJADKSLHJKADSLHJSALHJDSA',user);
     dbo.collection('users').findOne({id: user.id}, function (err, result) {
       if (err) throw err;
       if (!result) {
-        console.log("I am actually here also")
         dbo.collection('users').insertOne(user, function (err, result) {
           if (err) throw err;
           res.send("Object added to database");

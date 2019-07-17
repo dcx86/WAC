@@ -5,10 +5,7 @@ import Home from './Home';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  useEffect(() => {
-    console.log();
-  });
-
+  
   return (
     <div className="App">
       <header className="App-header">
