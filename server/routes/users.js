@@ -29,17 +29,4 @@ router.post('/', function (req, res, next) {
 });
 
 
-/* GET users listing. */
-// router.get('/', function (req, res, next) {
-//   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
-//     if (err) throw err;
-//     const dbo = db.db('mongo-mob');
-//     dbo.collection("post").find().toArray(function (err, result) {
-//       if (err) throw err;
-//       res.send(result);
-//       db.close();
-//     });
-//   });
-// });
-
 module.exports = router;

@@ -12,10 +12,10 @@ router.post('/', function (req, res, next) {
         MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
           if (err) throw err;
           const dbo = db.db('mongo-mob');
-          console.log(req.body.id);
-          dbo.collection('users').updateOne({id: req.body.id }, {'$push': {'history': result}}, function (err, result) {
+          const currently = result.currently;
+          dbo.collection('users').updateOne({id: req.body.id }, {'$set': {'history': currently}}, function (err, result) { //REMEMBER TO CHANGE TO PUSH
             if (err) throw err;
-            res.send("Object added to database");
+            res.send(currently);
             db.close();
           });
         });
@@ -23,5 +23,20 @@ router.post('/', function (req, res, next) {
   }
   getWeather();
 });
+
+
+// router.get('/', function (req, res, next) {
+//   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+//     if (err) throw err;
+//     const dbo = db.db('mongo-mob');
+//     dbo.collection("users").find().toArray(function (err, result) {
+//       if (err) throw err;
+//       console.log(result)
+//       res.send(result);
+//       db.close();
+//     });
+//   });
+// });
+
 
 module.exports = router;

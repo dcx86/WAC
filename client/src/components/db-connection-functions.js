@@ -10,23 +10,25 @@ export const postUsers = (data) => {
       'Content-Type': 'application/json'
     }
   })
-    // .then(res => res.text())
-    // .then(response => console.log(JSON.stringify(response, " <<<<<<<<<<<<<<<<<<<<")))
+  // .then(res => res.text())
+  // .then(response => console.log(JSON.stringify(response, " <<<<<<<<<<<<<<<<<<<<")))
 }
 
-export const postData = (data, id) => {
+export const getWeather = (data, id, setWeather) => {
   fetch("http://localhost:9000/postdata/", {
     method: 'POST',
-    body: JSON.stringify({...data, ...id}),
+    body: JSON.stringify({ ...data, ...id }),
     headers: {
       'Content-Type': 'application/json'
     }
   })
+    .then(res => res.json())
+    .then(res => setWeather(res));
 }
 
-export const callUsers = (setUsers) => {
-  fetch("http://localhost:9000/users/")
-    .then(res => res.text())
-    .then(res => setUsers({ users: res }));
-}
+// export const getWeather = (setWeather) => {
+//   fetch("http://localhost:9000/postdata/")
+//     .then(res => res.json())
+//     .then(res => setWeather(res));
+// }
 

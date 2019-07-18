@@ -1,29 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { postData } from './db-connection-functions';
+import { getWeather } from './db-connection-functions';
 
 function Home({isLogin}) {
   const [geolocation, setGeolocation] = useState({});
-  // const [weather, setWeather] = useState({ daily: { summary: undefined } });
+  const [weather, setWeather] = useState({});
 
 
   useEffect(() => {
     console.log('this effect runs only on mount');
     getGeolocation();
-    // getWeather();
   }, []);
 
   useEffect(() => {
     if (geolocation) {
-      postData(geolocation, isLogin);
+      getWeather(geolocation, isLogin, setWeather);
     }
   }, [geolocation]);
 
-  // useEffect(() => {
-  //   if (geolocation){
-  //     // postUsers(geolocation)
-  //   }
-  //   console.log('this effect runs only when geoloc&weather changes');
-  // }, [geolocation, weather]);
+  useEffect(() => {
+  }, [weather]);
+
+
 
   const getGeolocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -35,6 +32,7 @@ function Home({isLogin}) {
     <div className="Home">
       <header className="Home--header">
         <p>You are now logged in!</p>
+        {weather && <p>{weather.summary}</p>}
       </header>
     </div>
   );
