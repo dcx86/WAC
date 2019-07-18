@@ -23,8 +23,8 @@ export const getWeather = (data, id, setWeather) => {
     }
   })
     .then(res => res.json())
-    .then(res => setWeather(res));
-    
+    .then(res => setWeather(res))
+    .catch(err => console.log(err))
 }
 
 // export const getWeather = (setWeather) => {
