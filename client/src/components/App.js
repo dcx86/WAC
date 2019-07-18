@@ -8,7 +8,7 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App__header">
         <p>WAC</p>
       </header>
       {!isLogin && <Login setIsLogin={setIsLogin} />}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getWeather } from './db-connection-functions';
 import Loader from 'react-loader-spinner';
+import './Home.css';
+
 
 function Home({ isLogin }) {
   const [geolocation, setGeolocation] = useState({});
@@ -31,10 +33,10 @@ function Home({ isLogin }) {
 
   return (
     <div className="Home">
-      <header className="Home--header">
+      <div className="Home__body">
         {!weather ?
           <Loader type="Grid" color="#000000" height={120} width={120} /> :
-          <div>
+          <div className="Home__summary">
             <p>You are in CITY!</p>
             <p>This is the current weather report</p>
             <p>Summary: {weather.summary}</p>
@@ -46,7 +48,7 @@ function Home({ isLogin }) {
             <p>Visibility: {weather.visibility} km</p>
           </div>
         }
-      </header>
+      </div>
     </div>
   );
 

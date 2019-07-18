@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import FacebookLogin from 'react-facebook-login';
-import { postUsers, callUsers } from './db-connection-functions.js'
+import { postUsers, callUsers } from './db-connection-functions.js';
+import './Login.css';
+
 
 function Login({ setIsLogin }) {
   const [login, setLogin] = useState();
@@ -12,7 +14,8 @@ function Login({ setIsLogin }) {
     }
   }, [login])
 
-  const responseFacebook = ({ id, name, email, accessToken }) => {
+  const responseFacebook = ({ id, name, email, accessToken, picture }) => {
+    console.log(picture);
     setLogin({ id, name, email, accessToken });
     setIsLogin({id});
   }
@@ -23,9 +26,9 @@ function Login({ setIsLogin }) {
 
   return (
     <div className="Login">
-      <header className="Login--header">
+      <div className="Login__body">
         <p>LOGIN</p>
-      </header>
+      </div>
       {!login && <FacebookLogin
         appId="2851709378235915"
         fields="name,email,picture"

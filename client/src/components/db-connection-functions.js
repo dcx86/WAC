@@ -24,6 +24,7 @@ export const getWeather = (data, id, setWeather) => {
   })
     .then(res => res.json())
     .then(res => setWeather(res));
+    
 }
 
 // export const getWeather = (setWeather) => {
