@@ -9,10 +9,14 @@ router.post('/', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
     if (err) throw err;
     const dbo = db.db('mongo-mob');
-    const user = req.body;
-    dbo.collection('users').findOne({id: user.id}, function (err, result) {
+    const auth = req.body
+    const user = {
+      ...req.body,
+      history : []
+    }
+    dbo.collection('users').find({}, {projection: {_id: 0, id:1}}).toArray( function (err, result) {
       if (err) throw err;
-      if (!result) {
+      if (!result.find(user => user.id === auth.id)) {
         dbo.collection('users').insertOne(user, function (err, result) {
           if (err) throw err;
           res.send("Object added to database");
