@@ -2,10 +2,10 @@ import fetch from 'node-fetch';
 
 
 
-export const postUsers = (testObj) => {
+export const postUsers = (data) => {
   fetch("http://localhost:9000/users/", {
     method: 'POST',
-    body: JSON.stringify(testObj),
+    body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json'
     }

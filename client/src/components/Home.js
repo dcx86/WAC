@@ -31,14 +31,6 @@ function Home() {
     });
   }
 
-  // const getWeather = () => {
-  //   fetch(`https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/269bb9a5c92626a0f53367cd2c92f543/${geolocation.lat},${geolocation.long}?units=si`)
-  //     .then(data => data.json())
-  //     .then(result => {
-  //       if (result) setWeather(result)
-  //     });
-  // }
-
   return (
     <div className="Home">
       <header className="Home--header">
