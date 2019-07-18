@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { postData } from './db-connection-functions';
 
-function Home() {
+function Home({isLogin}) {
   const [geolocation, setGeolocation] = useState({});
   // const [weather, setWeather] = useState({ daily: { summary: undefined } });
 
@@ -14,7 +14,7 @@ function Home() {
 
   useEffect(() => {
     if (geolocation) {
-      postData(geolocation);
+      postData(geolocation, isLogin);
     }
   }, [geolocation]);
 

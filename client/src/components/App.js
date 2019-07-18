@@ -12,7 +12,7 @@ function App() {
         <p>WAC</p>
       </header>
       {!isLogin && <Login setIsLogin={setIsLogin} />}
-      {isLogin && <Home />}
+      {isLogin && <Home isLogin={isLogin}/>}
     </div>
   );
 }

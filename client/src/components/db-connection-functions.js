@@ -14,10 +14,10 @@ export const postUsers = (data) => {
     // .then(response => console.log(JSON.stringify(response, " <<<<<<<<<<<<<<<<<<<<")))
 }
 
-export const postData = (data) => {
+export const postData = (data, id) => {
   fetch("http://localhost:9000/postdata/", {
     method: 'POST',
-    body: JSON.stringify(data),
+    body: JSON.stringify({...data, ...id}),
     headers: {
       'Content-Type': 'application/json'
     }

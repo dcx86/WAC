@@ -14,7 +14,7 @@ function Login({ setIsLogin }) {
 
   const responseFacebook = ({ id, name, email, accessToken }) => {
     setLogin({ id, name, email, accessToken });
-    setIsLogin(true);
+    setIsLogin({id});
   }
 
   //   window.FB.getLoginStatus(function(response) {
