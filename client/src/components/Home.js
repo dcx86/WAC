@@ -5,6 +5,7 @@ import './Home.css';
 import tempImg from '../img/temperature.svg';
 import windImg from '../img/wind.svg';
 import fogImg from '../img/fog.svg';
+import Skycons from 'react-skycons';
 
 
 
@@ -61,7 +62,7 @@ function Home({ isLogin }) {
             </div>
             <div className="Home__summary__item">
               <img src={fogImg} />
-              <p>{weather.visibility} km</p>
+              <p>{Math.round(weather.visibility)} km</p>
             </div>
           </div>
         }
