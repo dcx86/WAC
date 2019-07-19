@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { getWeather } from './db-connection-functions';
-import Loader from 'react-loader-spinner';
 import './Home.css';
+import ReactAnimatedWeather from 'react-animated-weather';
 import tempImg from '../img/temperature.svg';
 import windImg from '../img/wind.svg';
 import fogImg from '../img/fog.svg';
-import Skycons from 'react-skycons';
 
 
 
@@ -37,12 +36,24 @@ function Home({ isLogin }) {
     });
   }
 
+  const defaults = {
+    icon: 'WIND',
+    color: 'white',
+    size: 350,
+    animate: true
+  };
+
   return (
     <div className="Home">
       <div className="Home__body">
         {!weather ?
           <div className="Home__spinner">
-            <Loader  type="Grid" color="#d1d1d1" height={120} width={120} />
+            <ReactAnimatedWeather
+              className="App__animatedweather"
+              icon={defaults.icon}
+              color={defaults.color}
+              size={defaults.size}
+              animate={defaults.animate}/>
           </div> :
           <div className="Home__summary">
             <p>It is currently <b>{weather.summary}</b> in </p>

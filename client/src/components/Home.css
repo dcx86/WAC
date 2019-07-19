@@ -3,6 +3,7 @@
   flex-direction: column;
   text-align: center;
   flex-grow: 1;
+  width: 100%;
 }
 .Home__body {
   flex-grow: 1;
@@ -13,9 +14,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-/* .Home__spinner {
-  margin-top: 5em;
-} */
+.Home__spinner {
+  min-width: 100%;
+}
 .Home__summary {
   display: flex;
   flex-direction: column;
