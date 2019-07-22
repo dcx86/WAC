@@ -15,7 +15,7 @@ export const postUsers = (data) => {
 }
 
 export const getWeather = (data, id, setWeather) => {
-  fetch("http://localhost:9000/weather/", {
+  fetch("http://localhost:9000/data/", {
     method: 'POST',
     body: JSON.stringify({ ...data, ...id }),
     headers: {
