@@ -10,7 +10,7 @@ import fogImg from '../img/fog.svg';
 
 
 function Home({ isLogin }) {
-  const [geolocation, setGeolocation] = useState({});
+  const [geolocation, setGeolocation] = useState();
   const [weather, setWeather] = useState();
 
 
