@@ -21,6 +21,7 @@ router.post('/', function (req, res, next) {
         });
       });
   }
+  getWeather();
 });
 
 module.exports = router;

@@ -5,7 +5,6 @@ import ReactAnimatedWeather from 'react-animated-weather';
 import tempImg from '../img/temperature.svg';
 import windImg from '../img/wind.svg';
 import fogImg from '../img/fog.svg';
-import Charts from './Charts';
 
 
 
@@ -75,7 +74,6 @@ function Home({ isLogin }) {
             <div className="Home__summary__item">
               <img src={fogImg} />
               <p>{Math.round(weather.visibility)} km</p>
-              < Charts />
             </div>
           </div>
         }
