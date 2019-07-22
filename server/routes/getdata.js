@@ -31,7 +31,7 @@ function transferToDb(result, req, res) {
   MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
     if (err) throw err;
     const dbo = db.db('mongo-mob');
-    dbo.collection('users').updateOne({ id: req.body.id}, {'$set': {'history': result}}, function (err, result) {
+    dbo.collection('users').updateOne({ id: req.body.id}, {'$push': {'history': result }}, function (err, result) {
       if (err) throw err;
       res.send(result);
       db.close();
