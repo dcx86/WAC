@@ -9,7 +9,7 @@ router.post('/', function (req, res, next) {
   Promise.all([
     fetch(`https://api.darksky.net/forecast/${darkSkyKey}/${req.body.lat},${req.body.long}?units=si`)
       .then(data => data.json())
-      .then(result => result.currently)
+      .then(result => ({currently: result.currently, daily: result.daily}))
      ,
     fetch(`https://api.opencagedata.com/geocode/v1/json?q=${req.body.lat}+${req.body.long}&key=${openCageKey}&pretty=1}`)
       .then(response => response.json())
@@ -30,6 +30,7 @@ router.post('/', function (req, res, next) {
 function transferToDb(data, req, res) {
   MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
     if (err) throw err;
+    console.log(data)
     const dbo = db.db('mongo-mob');
     dbo.collection('users').updateOne({ id: req.body.id}, {'$push': {'history': data }}, function (err, result) {
       if (err) throw err;

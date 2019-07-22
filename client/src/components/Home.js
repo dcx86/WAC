@@ -5,6 +5,7 @@ import ReactAnimatedWeather from 'react-animated-weather';
 import tempImg from '../img/temperature.svg';
 import windImg from '../img/wind.svg';
 import fogImg from '../img/fog.svg';
+import Charts from './Charts';
 
 
 
@@ -25,7 +26,6 @@ function Home({ isLogin }) {
   }, [geolocation]);
 
   useEffect(() => {
-    console.log(data , " eeeeeeeeeeeeeeeeeeee")
   }, [data]);
 
 
@@ -59,32 +59,34 @@ function Home({ isLogin }) {
               animate={defaults.animate}/>
           </div> :
           <div className="Home__summary">
-            <p>It is currently <b>{data.weather.summary}</b> in </p>
+            <p>It is currently <b>{data.weather.currently.summary}</b> in </p>
             <h1>{data.location.city}</h1>
             <h6>{data.location.district}</h6>
             <div className="Home__summary__temp">
-              <p>{Math.round(data.weather.temperature)}°</p>
+              <p>{Math.round(data.weather.currently.temperature)}°</p>
             </div>
             <div className="Home__summary__item">
               <img src={tempImg} />
               <div>              
-                <p>{Math.round(data.weather.apparentTemperature)} C°</p>
+                <p>{Math.round(data.weather.currently.apparentTemperature)} C°</p>
               </div>
             </div>
             <div className="Home__summary__item">
               <img src={windImg} />
-              <p>{data.weather.windSpeed} m/s</p>
+              <p>{data.weather.currently.windSpeed} m/s</p>
             </div>
             <div className="Home__summary__item">
               <img src={fogImg} />
-              <p>{Math.round(data.weather.visibility)} km</p>
+              <p>{Math.round(data.weather.currently.visibility)} km</p>
             </div>
             <div className="Home__summary__item">  
               <p>{data.aq.aqius} aqi</p> 
             </div>
+            <div className="Home__summary__item">
+              <Charts data={data}/>
+            </div>
           </div>
         }
-        
       </div>
 
     </div>

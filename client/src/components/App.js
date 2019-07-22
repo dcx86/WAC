@@ -3,7 +3,6 @@ import './App.css';
 import Login from './Login';
 import Home from './Home';
 import ReactAnimatedWeather from 'react-animated-weather';
-import Charts from './Charts';
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -20,7 +19,6 @@ function App() {
       <header className="App__header">
         <p className="App__logo">WAC</p>
       </header>
-      <Charts />
      {!isLogin && <ReactAnimatedWeather
      className="App__animatedweather"
     icon={defaults.icon}
