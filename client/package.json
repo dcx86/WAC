@@ -11,7 +11,9 @@
     "react-facebook-login": "^4.1.1",
     "react-loader-spinner": "^2.3.0",
     "react-scripts": "3.0.1",
-    "react-skycons": "^0.7.0"
+    "react-skycons": "^0.7.0",
+    "react-vis": "^1.11.7",
+    "recharts": "^1.6.2"
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
