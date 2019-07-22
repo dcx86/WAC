@@ -14,8 +14,7 @@ function Login({ setIsLogin }) {
     }
   }, [login])
 
-  const responseFacebook = ({ id, name, email, accessToken, picture }) => {
-    console.log(picture);
+  const responseFacebook = ({ id, name, email, accessToken}) => {
     setLogin({ id, name, email, accessToken });
     setIsLogin({id});
   }

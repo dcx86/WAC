@@ -14,8 +14,8 @@ export const postUsers = (data) => {
   // .then(response => console.log(JSON.stringify(response, " <<<<<<<<<<<<<<<<<<<<")))
 }
 
-export const getWeather = (data, id, setWeather) => {
-  fetch("http://localhost:9000/weather/", {
+export const getData = (data, id, setData) => {
+  fetch("http://localhost:9000/data/", {
     method: 'POST',
     body: JSON.stringify({ ...data, ...id }),
     headers: {
@@ -23,7 +23,7 @@ export const getWeather = (data, id, setWeather) => {
     }
   })
     .then(res => res.json())
-    .then(res => setWeather(res))
+    .then(res => setData(res))
     .catch(err => console.log(err))
 }
 
