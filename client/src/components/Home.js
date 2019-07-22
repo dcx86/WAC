@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getWeather } from './db-connection-functions';
+import { getData } from './db-connection-functions';
 import './Home.css';
 import ReactAnimatedWeather from 'react-animated-weather';
 import tempImg from '../img/temperature.svg';
@@ -11,7 +11,7 @@ import fogImg from '../img/fog.svg';
 
 function Home({ isLogin }) {
   const [geolocation, setGeolocation] = useState();
-  const [weather, setWeather] = useState();
+  const [data, setData] = useState();
 
 
   useEffect(() => {
@@ -21,12 +21,13 @@ function Home({ isLogin }) {
 
   useEffect(() => {
     if (geolocation) {
-      getWeather(geolocation, isLogin, setWeather);
+      getData(geolocation, isLogin, setData);
     }
   }, [geolocation]);
 
   useEffect(() => {
-  }, [weather]);
+    console.log(data , " eeeeeeeeeeeeeeeeeeee")
+  }, [data]);
 
 
 
@@ -35,6 +36,8 @@ function Home({ isLogin }) {
       setGeolocation({ lat: position.coords.latitude, long: position.coords.longitude })
     });
   }
+
+
 
   const defaults = {
     icon: 'WIND',
@@ -46,7 +49,7 @@ function Home({ isLogin }) {
   return (
     <div className="Home">
       <div className="Home__body">
-        {!weather ?
+        {!data ?
           <div className="Home__spinner">
             <ReactAnimatedWeather
               className="App__animatedweather"
@@ -56,24 +59,28 @@ function Home({ isLogin }) {
               animate={defaults.animate}/>
           </div> :
           <div className="Home__summary">
-            <p>It is currently <b>{weather.summary}</b> in </p>
-            <h1>Stockholm</h1>
+            <p>It is currently <b>{data.weather.summary}</b> in </p>
+            <h1>{data.location.city}</h1>
+            <h6>{data.location.district}</h6>
             <div className="Home__summary__temp">
-              <p>{Math.round(weather.temperature)}°</p>
+              <p>{Math.round(data.weather.temperature)}°</p>
             </div>
             <div className="Home__summary__item">
               <img src={tempImg} />
               <div>              
-                <p>{Math.round(weather.apparentTemperature)} C°</p>
+                <p>{Math.round(data.weather.apparentTemperature)} C°</p>
               </div>
             </div>
             <div className="Home__summary__item">
               <img src={windImg} />
-              <p>{weather.windSpeed} m/s</p>
+              <p>{data.weather.windSpeed} m/s</p>
             </div>
             <div className="Home__summary__item">
               <img src={fogImg} />
-              <p>{Math.round(weather.visibility)} km</p>
+              <p>{Math.round(data.weather.visibility)} km</p>
+            </div>
+            <div className="Home__summary__item">  
+              <p>{data.aq.aqius} aqi</p> 
             </div>
           </div>
         }

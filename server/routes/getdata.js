@@ -22,18 +22,18 @@ router.post('/', function (req, res, next) {
       .then(data => data.json())
 
   ]).then(([weather, location, aq, co2]) =>  ({timeStamp: Date.now(), weather, location, aq, co2}))
-    .then(result => transferToDb(result, req, res))
+    .then(data => transferToDb(data, req, res))
     .catch(err => console.log(err))
 });
 
 
-function transferToDb(result, req, res) {
+function transferToDb(data, req, res) {
   MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
     if (err) throw err;
     const dbo = db.db('mongo-mob');
-    dbo.collection('users').updateOne({ id: req.body.id}, {'$push': {'history': result }}, function (err, result) {
+    dbo.collection('users').updateOne({ id: req.body.id}, {'$push': {'history': data }}, function (err, result) {
       if (err) throw err;
-      res.send(result);
+      res.send(data);
       db.close();
     });
   });
