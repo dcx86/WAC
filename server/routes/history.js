@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
+const moment = require('moment');
+
 const url = "mongodb://localhost:27017";
-// const getCollection = require('mongodb').getCollection;
 
 router.post('/', function (req, res, next) {
   MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
@@ -16,10 +17,19 @@ router.post('/', function (req, res, next) {
       if (err) throw err;
       const userData = result.find(user => user.id === auth.id)
       if (userData) {
-        const aqi = userData.history.map(e => e.aq.aqius)
-        console.log(userData);
-        console.log(aqi , "treeeeeeeeeeeeeeeeeeeee");
-        res.send(aqi)
+        const history = userData.history.map(e => ({
+          location: e.location.city, 
+          timeStamp: moment(e.timeStamp).format("MMM Do hh:mm"), 
+          aqi:e.aq.aqius,
+          temp: Math.round(e.weather.currently.temperature),
+          precip: e.weather.currently.precipProbability*100,
+          pressure: Math.round(e.weather.currently.pressure),
+          humidity: e.weather.currently.humidity*100,
+          windspeed: Math.round(e.weather.currently.windSpeed),
+          visibility: Math.round(e.weather.currently.visibility),
+          co2: Math.round(e.co2.data.carbonIntensity)
+        }));
+        res.send({history})
         db.close();
       }
       db.close();

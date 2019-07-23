@@ -30,13 +30,14 @@ function Home({ isLogin }) {
   }, [data]);
 
   useEffect(() => {
-   console.log(history)
   }, [history]);
 
   
   const getGeolocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
+      // setGeolocation({ lat: position.coords.latitude, long: position.coords.longitude })
       setGeolocation({ lat: position.coords.latitude, long: position.coords.longitude })
+
     });
   }
 
@@ -65,7 +66,7 @@ function Home({ isLogin }) {
           
           <div className="Home__summary">
             <div className="Home__summary__item">
-              <Charts data={data}/>
+              <Charts data={data} history={history}/>
             </div>
             <p>It is currently <b>{data.weather.currently.summary}</b> in </p>
             <h1>{data.location.city}</h1>
