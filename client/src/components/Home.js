@@ -36,7 +36,10 @@ function Home({ isLogin }) {
 
 
   useEffect(() => {
-    if (data) getHistory(isLogin, setHistory);
+    if (data) {
+      getHistory(isLogin, setHistory);
+      console.log('fffffffffffffffff', data)
+    }
   }, [data]);
 
   useEffect(() => {
@@ -51,7 +54,30 @@ function Home({ isLogin }) {
     });
   }
 
-
+  const getWeatherIcon = (weather) => {
+    switch(weather) {
+      case "partly-cloudy-day" :
+        return (<img src={partlyCloudyDay} />)
+      case "partly-cloudy-night" :
+        return (<img src={partlyCloudyNight} />)
+      case "clear-day" :
+        return (<img src={clearDay} />)
+      case "clear-night" :
+        return (<img src={clearNight} />)
+      case "cloudy" :
+        return (<img src={cloudy} />)
+      case "fog" :
+        return (<img src={fog} />)
+      case "rain" :
+        return (<img src={rain} />)
+      case "sleet" :
+        return (<img src={sleet} />)
+      case "snow" :
+        return (<img src={snow} />)
+      case "wind" :
+        return (<img src={wind} />)
+    }
+  }
 
   const defaults = {
     icon: 'WIND',
@@ -76,7 +102,7 @@ function Home({ isLogin }) {
           
           <div className="Home__summary">
             <div>
-              <img src={clearDay} />
+              {getWeatherIcon(data.weather.currently.icon)}
             </div>
             <div className="Home__summary__item">
               <Charts data={data} history={history}/>
