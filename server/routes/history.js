@@ -14,9 +14,12 @@ router.post('/', function (req, res, next) {
     }
     dbo.collection('users').find({}, {projection: {_id: 0, id:1 , history:1}}).toArray( function (err, result) {
       if (err) throw err;
-      const history = result.find(user => user.id === auth.id)
-      if (history) {
-        res.send(history)
+      const userData = result.find(user => user.id === auth.id)
+      if (userData) {
+        const aqi = userData.history.map(e => e.aq.aqius)
+        console.log(userData);
+        console.log(aqi , "treeeeeeeeeeeeeeeeeeeee");
+        res.send(aqi)
         db.close();
       }
       db.close();
