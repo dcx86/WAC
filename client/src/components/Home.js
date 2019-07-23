@@ -6,6 +6,16 @@ import tempImg from '../img/temperature.svg';
 import windImg from '../img/wind.svg';
 import fogImg from '../img/fog.svg';
 import Charts from './Charts';
+import clearDay from '../img/weather/clearDay.svg'
+import clearNight from '../img/weather/clearNight.svg'
+import cloudy from '../img/weather/cloudy.svg'
+import fog from '../img/weather/fog.svg'
+import partlyCloudyDay from '../img/weather/partlyCloudyDay.svg'
+import partlyCloudyNight from '../img/weather/partlyCloudyNight.svg'
+import rain from '../img/weather/rain.svg'
+import sleet from '../img/weather/sleet.svg'
+import snow from '../img/weather/snow.svg'
+import wind from '../img/weather/wind.svg'
 
 
 
@@ -65,6 +75,9 @@ function Home({ isLogin }) {
           </div> :
           
           <div className="Home__summary">
+            <div>
+              <img src={clearDay} />
+            </div>
             <div className="Home__summary__item">
               <Charts data={data} history={history}/>
             </div>

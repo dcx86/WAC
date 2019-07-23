@@ -19,10 +19,6 @@ function Login({ setIsLogin }) {
     setIsLogin({id});
   }
 
-  //   window.FB.getLoginStatus(function(response) {
-  //     statusChangeCallback(response);
-  // });
-
   return (
     <div className="Login">
       <div className="Login__body">
