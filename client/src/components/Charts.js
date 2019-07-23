@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { LineChart, Line } from 'recharts';
+import { LineChart, Line, XAxis, YAxis } from 'recharts';
 
-// XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+// , CartesianGrid, Tooltip, Legend,
 
 export default function Chart ({data}) {
   const [chartData, setChartData] = useState();
@@ -9,11 +9,14 @@ export default function Chart ({data}) {
     useEffect( () => {
       const forecastArray = data.weather.daily.data.map(day => ({name: day.time, pv:day.temperatureMax}));
       setChartData(forecastArray);
+      console.log(forecastArray);
     }, [data])
     
     return (
-      <LineChart width={300} height={100} data={chartData}>
+      <LineChart width={600} height={400} data={chartData}>
         <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+        <XAxis dataKey="name" />
+        <YAxis dataKey="pv" />
       </LineChart>
     );
 }

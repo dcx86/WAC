@@ -58,7 +58,11 @@ function Home({ isLogin }) {
               size={defaults.size}
               animate={defaults.animate}/>
           </div> :
+          
           <div className="Home__summary">
+            <div className="Home__summary__item">
+              <Charts data={data}/>
+            </div>
             <p>It is currently <b>{data.weather.currently.summary}</b> in </p>
             <h1>{data.location.city}</h1>
             <h6>{data.location.district}</h6>
@@ -82,9 +86,7 @@ function Home({ isLogin }) {
             <div className="Home__summary__item">  
               <p>{data.aq.aqius} aqi</p> 
             </div>
-            <div className="Home__summary__item">
-              <Charts data={data}/>
-            </div>
+           
           </div>
         }
       </div>

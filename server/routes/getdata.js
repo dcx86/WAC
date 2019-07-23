@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 const fetch = require('node-fetch');
 const MongoClient = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017";
 const  { airVisKey, darkSkyKey, openCageKey, co2key} = require('./APIkeys')
+const url = "mongodb://localhost:27017";
+
 
 router.post('/', function (req, res, next) {
   Promise.all([
