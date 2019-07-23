@@ -10,8 +10,6 @@ export default function Chart ({data}) {
     useEffect( () => {
       const forecastArray = data.weather.daily.data.map(day => ({name: moment(parseInt(day.time + '000')).format('dddd')[0], high:Math.round(day.temperatureMax), low:Math.round(day.temperatureMin)}));
       setChartData(forecastArray);
-      console.log(forecastArray);
-      console.log(moment(1564437600000).format('dddd'));
     }, [data])
     
     return (

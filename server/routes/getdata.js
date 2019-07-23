@@ -31,7 +31,6 @@ router.post('/', function (req, res, next) {
 function transferToDb(data, req, res) {
   MongoClient.connect(url, {useNewUrlParser: true}, function (err, db) {
     if (err) throw err;
-    console.log(data)
     const dbo = db.db('mongo-mob');
     dbo.collection('users').updateOne({ id: req.body.id}, {'$push': {'history': data }}, function (err, result) {
       if (err) throw err;

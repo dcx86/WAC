@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getData } from './db-connection-functions';
+import { getData, getHistory } from './db-connection-functions';
 import './Home.css';
 import ReactAnimatedWeather from 'react-animated-weather';
 import tempImg from '../img/temperature.svg';
@@ -12,6 +12,7 @@ import Charts from './Charts';
 function Home({ isLogin }) {
   const [geolocation, setGeolocation] = useState();
   const [data, setData] = useState();
+  const [history, setHistory] = useState();
 
 
   useEffect(() => {
@@ -20,16 +21,19 @@ function Home({ isLogin }) {
   }, []);
 
   useEffect(() => {
-    if (geolocation) {
-      getData(geolocation, isLogin, setData);
-    }
+    if (geolocation) getData(geolocation, isLogin, setData); 
   }, [geolocation]);
 
+
   useEffect(() => {
+    if (data) getHistory(isLogin, setHistory);
   }, [data]);
 
+  useEffect(() => {
+   console.log(history)
+  }, [history]);
 
-
+  
   const getGeolocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
       setGeolocation({ lat: position.coords.latitude, long: position.coords.longitude })
