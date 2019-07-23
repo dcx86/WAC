@@ -6,10 +6,7 @@
   align-items:center;
   justify-content: space-between;
   text-align: center;
-  background: #ad5389;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh
+  height: vh;
 }
 
 .App__header {
@@ -18,10 +15,36 @@
 }
 
 .App__logo{
+  margin: 0;
+  padding-top: 48px;
   font-size: 3rem;
   font-family: Raleway;
 }
 
 canvas{
   margin-bottom: 5em;
+}
+
+.App__morning {
+  background: #b92b27;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom , #1565C0, #b92b27);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #1565C0, #b92b27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.App__night {
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.App__evening {
+  background: #108dc7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ef8e38, #108dc7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ef8e38, #108dc7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.App__day {
+  background: #00F260;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #0575E6, rgb(0, 242, 137)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
