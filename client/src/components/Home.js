@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getData, getHistory } from './db-connection-functions';
 import './Home.css';
 import ReactAnimatedWeather from 'react-animated-weather';
-import tempImg from '../img/temperature.svg';
-import windImg from '../img/wind.svg';
-import fogImg from '../img/fog.svg';
 import Charts from './Charts';
 import clearDay from '../img/weather/clearDay.svg'
 import clearNight from '../img/weather/clearNight.svg'
@@ -16,8 +13,14 @@ import rain from '../img/weather/rain.svg'
 import sleet from '../img/weather/sleet.svg'
 import snow from '../img/weather/snow.svg'
 import wind from '../img/weather/wind.svg'
-
-
+import precip from '../img/climate-icons/precipitation.svg'
+import aq from '../img/climate-icons/aq.svg'
+import co2emission from '../img/climate-icons/co2emission.svg'
+import humidity from '../img/climate-icons/humidity.svg'
+import visibility from '../img/climate-icons/visibility.svg'
+import windspeed from '../img/climate-icons/windspeed.svg'
+import pressure from '../img/climate-icons/pressure.svg'
+import apparent from '../img/climate-icons/apparent.svg'
 
 function Home({ isLogin }) {
   const [geolocation, setGeolocation] = useState();
@@ -101,35 +104,63 @@ function Home({ isLogin }) {
           </div> :
           
           <div className="Home__summary">
-            <div>
-              {getWeatherIcon(data.weather.currently.icon)}
-            </div>
-            <div className="Home__summary__item">
-              <Charts data={data} history={history}/>
-            </div>
-            <p>It is currently <b>{data.weather.currently.summary}</b> in </p>
             <h1>{data.location.city}</h1>
             <h6>{data.location.district}</h6>
             <div className="Home__summary__temp">
               <p>{Math.round(data.weather.currently.temperature)}°</p>
             </div>
-            <div className="Home__summary__item">
-              <img src={tempImg} />
-              <div>              
-                <p>{Math.round(data.weather.currently.apparentTemperature)} C°</p>
-              </div>
+            <div>
+              {getWeatherIcon(data.weather.currently.icon)}
+            </div>
+            <div>   
+              <img className="Home__summary__icon" src={apparent} />         
+              <p>{Math.round(data.weather.currently.apparentTemperature)} C°</p>
             </div>
             <div className="Home__summary__item">
-              <img src={windImg} />
+              <img className="Home__summary__icon" src={precip} />
+              <p>{data.weather.currently.precipProbability}%</p>
+            </div>
+            <div> 
+             <p><b>{data.weather.summary}</b></p>
+            </div>
+
+            <div className="Home__summary__item">
+              <Charts data={data} history={history}/>
+            </div>
+
+            <div className="Home__summary__item">
+              <img className="Home__summary__icon" src={aq} />
+              <p>{data.aq.aqius}</p>
+            </div>
+
+            <div className="Home__summary__item">
+              <img className="Home__summary__icon" src={windspeed} />
               <p>{data.weather.currently.windSpeed} m/s</p>
             </div>
+
             <div className="Home__summary__item">
-              <img src={fogImg} />
+              <img className="Home__summary__icon" src={visibility} />
               <p>{Math.round(data.weather.currently.visibility)} km</p>
             </div>
-            <div className="Home__summary__item">  
-              <p>{data.aq.aqius} aqi</p> 
+
+          
+            <div className="Home__summary__item">
+              <img className="Home__summary__icon" src={humidity} />
+              <p>{data.weather.currently.humidity} %</p>
             </div>
+          
+            <div className="Home__summary__item">
+              <img className="Home__summary__icon" src={pressure} />
+              <p>{Math.round(data.weather.currently.pressure)} hPa</p>
+            </div>
+
+            <div className="Home__summary__item">
+              <img className="Home__summary__icon" src={co2emission} />
+              <p>{Math.round(data.co2.data.carbonIntensity)} gCO2/kWh</p>
+            </div>
+
+
+            
            
           </div>
         }

@@ -21,8 +21,6 @@ function Login({ setIsLogin }) {
 
   return (
     <div className="Login">
-      <div className="Login__body">
-      </div>
       {!login && <FacebookLogin
         appId="2851709378235915"
         fields="name,email,picture"

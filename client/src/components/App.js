@@ -17,7 +17,6 @@ function App() {
 
   const getClass = () => {
     const currentTime = moment().format('HH');
-    console.log(currentTime);
 
     switch (true) {
       case (currentTime >= 22 && currentTime < 4): 
@@ -34,16 +33,13 @@ function App() {
 
   return (
     <div className={getClass()}>
-      <header className="App__header">
-        <p className="App__logo">WAC</p>
-      </header>
      {!isLogin && <ReactAnimatedWeather
-     className="App__animatedweather"
-    icon={defaults.icon}
-    color={defaults.color}
-    size={defaults.size}
-    animate={defaults.animate}
-  />}
+      className="App__animatedweather"
+      icon={defaults.icon}
+      color={defaults.color}
+      size={defaults.size}
+      animate={defaults.animate}
+     />}
       {!isLogin && <Login setIsLogin={setIsLogin} />}
       {isLogin && <Home isLogin={isLogin}/>}
     </div>
