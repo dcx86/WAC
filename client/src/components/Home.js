@@ -60,25 +60,25 @@ function Home({ isLogin }) {
   const getWeatherIcon = (weather) => {
     switch(weather) {
       case "partly-cloudy-day" :
-        return (<img src={partlyCloudyDay} />)
+        return (<img className="summary__weathericon--size" src={partlyCloudyDay} />)
       case "partly-cloudy-night" :
-        return (<img src={partlyCloudyNight} />)
+        return (<img className="summary__weathericon--size" src={partlyCloudyNight} />)
       case "clear-day" :
-        return (<img src={clearDay} />)
+        return (<img className="summary__weathericon--size" src={clearDay} />)
       case "clear-night" :
-        return (<img src={clearNight} />)
+        return (<img className="summary__weathericon--size" src={clearNight} />)
       case "cloudy" :
-        return (<img src={cloudy} />)
+        return (<img className="summary__weathericon--size" src={cloudy} />)
       case "fog" :
-        return (<img src={fog} />)
+        return (<img className="summary__weathericon--size" src={fog} />)
       case "rain" :
-        return (<img src={rain} />)
+        return (<img className="summary__weathericon--size" src={rain} />)
       case "sleet" :
-        return (<img src={sleet} />)
+        return (<img className="summary__weathericon--size" src={sleet} />)
       case "snow" :
-        return (<img src={snow} />)
+        return (<img className="summary__weathericon--size" src={snow} />)
       case "wind" :
-        return (<img src={wind} />)
+        return (<img className="summary__weathericon--size" src={wind} />)
     }
   }
 
@@ -104,64 +104,68 @@ function Home({ isLogin }) {
           </div> :
           
           <div className="Home__summary">
-            <h1>{data.location.city}</h1>
-            <h6>{data.location.district}</h6>
+
+            <div className="Home__summary_location">
+              <h1>{data.location.city}</h1>
+              <h6>{data.location.district}</h6>
+            </div>
+
             <div className="Home__summary__temp">
               <p>{Math.round(data.weather.currently.temperature)}°</p>
             </div>
-            <div>
+
+            <div className="Home__summary__weathericon">
               {getWeatherIcon(data.weather.currently.icon)}
             </div>
-            <div>   
-              <img className="Home__summary__icon" src={apparent} />         
-              <p>{Math.round(data.weather.currently.apparentTemperature)} C°</p>
+
+            <div className="Home__summary__apparent">   
+              <img className="Home__summary__icon" src={apparent} /> 
+              <p>{Math.round(data.weather.currently.apparentTemperature)} °C</p>
             </div>
-            <div className="Home__summary__item">
+
+            <div className="Home__summary__precipitation">
               <img className="Home__summary__icon" src={precip} />
               <p>{data.weather.currently.precipProbability}%</p>
             </div>
-            <div> 
-             <p><b>{data.weather.summary}</b></p>
-            </div>
 
-            <div className="Home__summary__item">
+            <div className="Home__summary__summary">
+              <p><b>{data.weather.summary}</b></p>
+            </div>
+            
+            <div className="Home__summary__chart summary__item--full">
               <Charts data={data} history={history}/>
             </div>
 
-            <div className="Home__summary__item">
-              <img className="Home__summary__icon" src={aq} />
-              <p>{data.aq.aqius}</p>
-            </div>
-
-            <div className="Home__summary__item">
-              <img className="Home__summary__icon" src={windspeed} />
-              <p>{data.weather.currently.windSpeed} m/s</p>
-            </div>
-
-            <div className="Home__summary__item">
-              <img className="Home__summary__icon" src={visibility} />
-              <p>{Math.round(data.weather.currently.visibility)} km</p>
-            </div>
-
-          
-            <div className="Home__summary__item">
+            <div className="Home__summary__humidity">
               <img className="Home__summary__icon" src={humidity} />
               <p>{data.weather.currently.humidity} %</p>
             </div>
-          
-            <div className="Home__summary__item">
+            
+            <div className="Home__summary__pressure">
               <img className="Home__summary__icon" src={pressure} />
               <p>{Math.round(data.weather.currently.pressure)} hPa</p>
             </div>
+            
+            <div className="Home__summary__windspeed">
+            <img className="Home__summary__icon" src={windspeed} />
+            <p>{data.weather.currently.windSpeed} m/s</p>
+            </div>
+            
+            <div className="Home__summary__visibility">
+            <img className="Home__summary__icon" src={visibility} />
+            <p>{Math.round(data.weather.currently.visibility)} km</p>
+            </div>
 
-            <div className="Home__summary__item">
+            <div className="Home__summary__emission">
               <img className="Home__summary__icon" src={co2emission} />
               <p>{Math.round(data.co2.data.carbonIntensity)} gCO2/kWh</p>
             </div>
-
-
             
-           
+            <div className="Home__summary__aq">
+              <img className="Home__summary__icon" src={aq} />
+              <p>{data.aq.aqius}</p>
+            </div>
+  
           </div>
         }
       </div>
