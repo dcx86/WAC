@@ -6,7 +6,7 @@
   color: white;
 }
 .Home__spinner {
-
+  min-width: 100%;
 }
 .Home__summary {
   display: grid; 
