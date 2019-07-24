@@ -22,16 +22,16 @@ export default function Chart({ data, history }) {
 
   return (
     <div>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height={200}>
         <LineChart data={chartForecast}>
-          <Line type="monotone" dataKey="high" stroke="#8884d8" strokeWidth={2}>
+          <Line type="monotone" dataKey="high" stroke="#ffffff" fill="#fc3503" strokeWidth={2}>
             <LabelList dataKey="high" position="top" fill="#ffffff"/>
           </Line>
 
-          <Line type="monotone" dataKey="low" stroke="#8884d8" strokeWidth={2}>
+          <Line type="monotone" dataKey="low" stroke="#ffffff" strokeWidth={2} fill="#039dfc">
             <LabelList dataKey="low" position="bottom" fill="#ffffff"/>
           </Line>
-          <XAxis dataKey="name"  padding={{ left: 20, right: 20}} stroke="#ffffff"/>
+          <XAxis dataKey="name"  padding={{ left: 20, right: 20}} stroke="#ffffff" />
           <YAxis padding={{ top: 10 }} hide/>
       </LineChart>
      </ResponsiveContainer>
