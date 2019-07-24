@@ -118,14 +118,16 @@ function Home({ isLogin }) {
               {getWeatherIcon(data.weather.currently.icon)}
             </div>
 
-            <div className="Home__summary__apparent">   
-              <img className="Home__summary__icon" src={apparent} /> 
-              <p>{Math.round(data.weather.currently.apparentTemperature)} °C</p>
-            </div>
+            <div className="Home__summary__apparentPrecipitation">
+              <div className="Home__summary__apparent">   
+                <img className="Home__summary__icon" src={apparent} /> 
+                <p>{Math.round(data.weather.currently.apparentTemperature)} °C</p>
+              </div>
 
-            <div className="Home__summary__precipitation">
-              <img className="Home__summary__icon" src={precip} />
-              <p>{data.weather.currently.precipProbability}%</p>
+              <div className="Home__summary__precipitation">
+                <img className="Home__summary__icon" src={precip} />
+                <p>{data.weather.currently.precipProbability}%</p>
+              </div>
             </div>
 
             <div className="Home__summary__summary">
@@ -138,7 +140,7 @@ function Home({ isLogin }) {
 
             <div className="Home__summary__humidity">
               <img className="Home__summary__icon" src={humidity} />
-              <p>{data.weather.currently.humidity} %</p>
+              <p>{data.weather.currently.humidity*100} %</p>
             </div>
             
             <div className="Home__summary__pressure">
@@ -163,7 +165,7 @@ function Home({ isLogin }) {
             
             <div className="Home__summary__aq">
               <img className="Home__summary__icon" src={aq} />
-              <p>{data.aq.aqius}</p>
+              <p>{data.aq.aqius} AQI</p>
             </div>
   
           </div>
